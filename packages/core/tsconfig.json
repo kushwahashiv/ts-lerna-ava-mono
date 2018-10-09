@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "declaration": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "removeComments": false,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": false,
+    "allowJs": false,
+    "rootDir": "./",
+    "baseUrl": "../../",
+    "strict": true,
+    "strictNullChecks": false,
+    "noImplicitThis": false,
+    "outDir": "../../node_modules/@corejs/core",
+    "lib": ["es2017"]
+  },
+  "include": [
+    "*.ts",
+    "**/*.ts"
+  ],
+  "exclude": [
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "name": "ts-lerna-ava-mono",
+  "version": "0.0.1",
+  "description": "Typescript mono repo",
+  "private": true,
+  "main": "index.js",
+  "repository": "https://github.com/kushwahashiv/ts-lerna-ava-mono.git",
+  "author": "Shiv Kushwaha <kushwaha.shiv@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp build",
+    "build:lib": "gulp build --dist bundle",
+    "copy-docs": "gulp copy-docs",
+    "prepare:npm": "npm run build:lib && npm run copy-docs",
+    "bootstrap": "lerna bootstrap",
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier \"packages/**/*.ts\" --write",
+    "fix:tslint": "tslint --fix --project .",
+    "test": "run-s build test:*",
+    "test:lint": "tslint --project . && prettier \"packages/**/*.ts\" --list-different",
+    "test:unit": "nyc --silent ava",
+    "version": "standard-version",
+    "reset": "git clean -dfx && git reset --hard && npm i",
+    "clean": "rimraf ../../node_modules/@caroljs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^10.11.5",
+    "ava": "^1.0.0-beta.8",
+    "codecov": "^3.1.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "gulp": "^4.0.0",
+    "gulp-clang-format": "^1.0.27",
+    "gulp-clean": "^0.4.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-typescript": "^5.0.0-alpha.3",
+    "gulp-watch": "^5.0.1",
+    "imports-loader": "^0.8.0",
+    "lerna": "^3.4.1",
+    "npm-run-all": "^4.1.3",
+    "nyc": "^13.0.1",
+    "prettier": "^1.14.3",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-immutable": "^4.8.0",
+    "typescript": "^3.1.1"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "ava": {
+    "failFast": true,
+    "files": [
+      "bundle/**/*.spec.js"
+    ],
+    "sources": [
+      "bundle/**/*.js"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 140
+  },
+  "nyc": {
+    "exclude": [
+      "**/*.spec.js"
+    ]
+  }
+}
