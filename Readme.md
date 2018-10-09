@@ -1,1 +1,1 @@
-# Carol framework
+# TS-LERNA-AVA mono repo seed
